@@ -18,6 +18,6 @@ public class MainMenuButtonBehaviors : MonoBehaviour
 
     public void PlayGameButtonOnClicked()
     {
-        EditorSceneManager.LoadScene(sceneName:"JudeTestScene");
+        EditorSceneManager.LoadScene(sceneName:"GameScene");
     }
 }

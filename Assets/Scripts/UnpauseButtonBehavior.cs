@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class UnpauseButtonBehavior : MonoBehaviour
 {
     private Button _button;
-    private PauseInputHandlerBehavior _pauseBehavior;
+    private InputHandlerBehavior _pauseBehavior;
 
     // Start is called before the first frame update
     void Start()

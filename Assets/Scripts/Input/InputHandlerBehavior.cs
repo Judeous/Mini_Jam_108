@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseInputHandlerBehavior : MonoBehaviour
+public class InputHandlerBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _pauseMenu;
@@ -25,6 +25,12 @@ public class PauseInputHandlerBehavior : MonoBehaviour
     {
         //Get pause input
         float pauseInput = Input.GetAxis("Cancel");
+        float shootInput = Input.GetAxis("Fire1");
+
+        if (shootInput != 0)
+        {
+            //Make shoot stuff happen
+        }
 
         //If pausing and not holding pause
         if (pauseInput == 1)

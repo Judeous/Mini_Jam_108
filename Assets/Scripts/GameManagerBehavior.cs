@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameManagerBehavior : MonoBehaviour
 {
-    private PauseInputHandlerBehavior _pauseInput;
+    private InputHandlerBehavior _pauseInput;
 
     // Start is called before the first frame update
     void Start()
     {
-        _pauseInput = GetComponent<PauseInputHandlerBehavior>();
+        _pauseInput = GetComponent<InputHandlerBehavior>();
     }
 
     // Update is called once per frame

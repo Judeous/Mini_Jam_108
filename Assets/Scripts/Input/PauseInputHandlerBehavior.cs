@@ -7,8 +7,7 @@ public class PauseInputHandlerBehavior : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _pauseMenu;
     private bool _paused = false;
-
-    private float _timeUntilPausePressAvailable = 0;
+    private bool _holdingPause = false;
 
     public bool Paused
     {
@@ -24,27 +23,28 @@ public class PauseInputHandlerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Decrease time until Pause is available
-        _timeUntilPausePressAvailable -= Time.deltaTime;
-        if (_timeUntilPausePressAvailable < 0)
-            _timeUntilPausePressAvailable = 0;
-
         //Get pause input
         float pauseInput = Input.GetAxis("Cancel");
 
         //If pausing and not holding pause
-        if (pauseInput == 1 && _timeUntilPausePressAvailable == 0)
+        if (pauseInput == 1)
         {
-            if (_paused)
+            if (!_holdingPause)
             {
-                Unpause();
+                if (_paused)
+                {
+                    Unpause();
+                }
+                else
+                {
+                    Pause();
+                }
             }
-            else
-            {
-                Pause();
-            }
-            //Reset duration
-            _timeUntilPausePressAvailable = 0.25f;
+            _holdingPause = true;
+        }
+        else
+        {
+            _holdingPause = false;
         }
     }
 

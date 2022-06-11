@@ -29,9 +29,9 @@ MonoBehaviour:
   jumpForce: 14.77
   jumpCutMultiplier: 0.65
   jumpBufferTime: 0.086
-  wallJumpForce: {x: 7, y: 12}
-  wallJumpRunLerp: 0.11
-  wallJumpTime: 0.41
+  wallJumpForce: {x: 8, y: 13}
+  wallJumpRunLerp: 0.591
+  wallJumpTime: 0.111
   slideAccel: 8.4
   slidePower: 0.93
   dashAmount: 1

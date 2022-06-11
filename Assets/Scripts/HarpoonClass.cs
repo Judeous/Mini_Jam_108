@@ -10,7 +10,8 @@ public class HarpoonClass : MonoBehaviour
     public GameObject _Harpoon;
     [SerializeField]
     public GameObject _Gun;
-    public bool _hit = false;
+    private bool _shooting = false;
+    private bool _returning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,54 +22,46 @@ public class HarpoonClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
-        if (_hit == true)
+        if(_shooting)
+        {
+            _Harpoon.transform.Translate(0, 0, Time.deltaTime * _speed);
+        }
+        else if(_returning)
         {
             ReturnHarpoon();
         }
-
-        else if (_hit == false)
-        {
-            StopHaproon();
-        }
-
     }
 
-    public void StopHaproon()
+    public void StopHarpoon()
     {
         _Harpoon.transform.Translate(0, 0, 0);
+        _shooting = false;
     }
 
     public void ReturnHarpoon()
     {
         _Harpoon.transform.Translate(0, 0, Time.deltaTime * -_speed);
-        //_Harpoon.transform.parent = _Gun.transform;
     }
 
-        public void ShootForward()
+    public void ShootForward()
     {
-        _Harpoon.transform.Translate(0, 0, Time.deltaTime * _speed);
+
+        _shooting = true;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Return"))
-        {
-            _hit = true;
-        }
 
+        _shooting = false;
         if (other.gameObject.CompareTag("HarpoonGun"))
         {
-            _hit = false;
-
+            _returning = false;
+            StopHarpoon();
+            return;
         }
+        _returning = true;
     }
-
-
-
 
 
 }

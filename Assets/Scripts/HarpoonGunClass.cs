@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class HarpoonGunClass : MonoBehaviour
 {
-    [SerializeField]
-    public float _speed = 5;
-    [SerializeField]
-    public GameObject _Harpoon;
-    public bool _hit = false;
 
     // Start is called before the first frame update
     void Start()

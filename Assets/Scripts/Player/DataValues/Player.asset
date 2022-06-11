@@ -18,11 +18,11 @@ MonoBehaviour:
   dragAmount: 0.52
   frictionAmount: 5.16
   coyoteTime: 0.145
-  runMaxSpeed: 9.84
+  runMaxSpeed: 11.02
   runAccel: 9.41
   runDeccel: 15.46
   accelInAir: 0.74
-  deccelInAir: 0.67
+  deccelInAir: 0.17
   accelPower: 1.35
   stopPower: 1.23
   turnPower: 1.42
@@ -33,14 +33,14 @@ MonoBehaviour:
   wallJumpRunLerp: 0.591
   wallJumpTime: 0.111
   slideAccel: 8.4
-  slidePower: 0.93
+  slidePower: 1.3
   dashAmount: 1
-  dashSpeed: 13.57
-  dashAttackTime: 1.69
-  dashAttackDragAmount: 0.3
+  dashSpeed: 28
+  dashAttackTime: 0.1
+  dashAttackDragAmount: 0.2
   dashEndTime: 0.1
   dashUpEndMult: 0.05
   dashEndRunLerp: 0.05
-  dashBufferTime: 0.092
+  dashBufferTime: 0.435
   doKeepRunMomentum: 0
   doTurnOnWallJump: 0

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class GameManagerBehavior : MonoBehaviour
 {
-    private InputHandlerBehavior _pauseInput;
+    private InputHandler _pauseInput;
     [SerializeField] private AudioSource _gameplayAudioSource;
     [SerializeField] private AudioSource _pausedAudioSource;
     [SerializeField] private AudioSource _MainMenuAudioSource;
 
     [SerializeField] private bool _isMainMenu = false;
     private bool _canPause = true;
-    private bool _paused = false;
+    private bool _unpaused = false;
     
     public bool Paused
     {
-        get { return _paused; }
+        get { return _unpaused; }
     }
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class GameManagerBehavior : MonoBehaviour
     {
         if (!_isMainMenu)
         {
-            _pauseInput = GetComponent<InputHandlerBehavior>();
+            _pauseInput = GetComponent<InputHandler>();
             _canPause = _pauseInput ? true : false;
         }
     }
@@ -37,19 +37,19 @@ public class GameManagerBehavior : MonoBehaviour
 
         //Update Paused if this can pause
         if (_canPause)
-            _paused = _pauseInput.Paused;
+            _unpaused = _pauseInput.Paused;
 
-        //If the game is paused
-        if (_paused)
+        //If the game is unpaused
+        if (_unpaused)
         {
             //Pause the Gameplay music and play the Pause music
             //_gameplayAudioSource.Pause();
             //_pausedAudioSource.UnPause();
 
             if (_gameplayAudioSource)
-                _gameplayAudioSource.mute = true;
+                _gameplayAudioSource.mute = false;
             if (_pausedAudioSource)
-                _pausedAudioSource.mute = false;
+                _pausedAudioSource.mute = true;
         }
         else
         {
@@ -58,9 +58,9 @@ public class GameManagerBehavior : MonoBehaviour
             //_pausedAudioSource.Pause();
 
             if (_gameplayAudioSource)
-                _gameplayAudioSource.mute = false;
+                _gameplayAudioSource.mute = true;
             if (_pausedAudioSource)
-                _pausedAudioSource.mute = true;
+                _pausedAudioSource.mute = false;
         }
     }
 

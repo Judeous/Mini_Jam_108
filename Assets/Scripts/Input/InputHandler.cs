@@ -22,7 +22,7 @@ public class InputHandler : MonoBehaviour
 	public Vector2 MoveInput { get; private set; }
 	public float ClimbInput { get; private set; }
 
-	public bool isPaused = false;
+	public bool Paused = false;
 
 	private void Awake()
 	{
@@ -76,21 +76,20 @@ public class InputHandler : MonoBehaviour
 	}
 	#endregion
 
-	//Toggles the pause menu scren 
+	//Toggles the pause menu screen
 	public void OnPause()
     {
-
-		if(isPaused == false)
+		if (!Paused)
         {
 			PauseMenu.SetActive(false);
-			isPaused = true;
+			Paused = true;
 		
 			Time.timeScale = 1f;
 		}
-		else if(isPaused == true)
+		else
         {
 			PauseMenu.SetActive(true);
-			isPaused = false;
+			Paused = false;
 			Time.timeScale = 0.0000001f;
 			Debug.Log("Paused");
 		}

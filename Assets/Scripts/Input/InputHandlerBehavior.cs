@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputHandlerBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _pauseMenu;
     private bool _paused = false;
-    private bool _holdingPause = false;
+    //private bool _holdingPause = false;
 
     public bool Paused
     {
@@ -24,7 +25,7 @@ public class InputHandlerBehavior : MonoBehaviour
     void Update()
     {
         //Get pause input
-        float pauseInput = Input.GetAxis("Cancel");
+        //float pauseInput = Input.GetAxis("Cancel");
         float shootInput = Input.GetAxis("Fire1");
 
         if (shootInput != 0)
@@ -33,25 +34,25 @@ public class InputHandlerBehavior : MonoBehaviour
         }
 
         //If pausing and not holding pause
-        if (pauseInput == 1)
-        {
-            if (!_holdingPause)
-            {
-                if (_paused)
-                {
-                    Unpause();
-                }
-                else
-                {
-                    Pause();
-                }
-            }
-            _holdingPause = true;
-        }
-        else
-        {
-            _holdingPause = false;
-        }
+        //if (pauseInput == 1)
+        //{
+        //    if (!_holdingPause)
+        //    {
+        //        if (_paused)
+        //        {
+        //            Unpause();
+        //        }
+        //        else
+        //        {
+        //            Pause();
+        //        }
+        //    }
+        //    _holdingPause = true;
+        //}
+        //else
+        //{
+        //    _holdingPause = false;
+        //}
     }
 
     public void Unpause()

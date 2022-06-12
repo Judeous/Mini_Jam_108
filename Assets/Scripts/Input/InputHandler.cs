@@ -18,11 +18,13 @@ public class InputHandler : MonoBehaviour
 	public Action<InputArgs> OnJumpReleased;
 	public Action<InputArgs> OnDash;
 
+	[SerializeField] private HarpoonClass _harpoon;
 
 	public Vector2 MoveInput { get; private set; }
 	public float ClimbInput { get; private set; }
 
 	public bool Paused = false;
+
 
 	private void Awake()
 	{
@@ -54,6 +56,11 @@ public class InputHandler : MonoBehaviour
         controls.Player.Climb.canceled += ctx => ClimbInput = 0;
 		controls.UI.Pause.performed += ctx => OnPause();
 
+
+        controls.Shooting.RIGHT.performed += ctx => _harpoon.IsShootingRight();
+        controls.Shooting.LEFT.performed += ctx => _harpoon.IsShootingLeft();
+        controls.Shooting.DOWN.performed += ctx => _harpoon.IsShootingDown();
+        controls.Shooting.UP.performed += ctx => _harpoon.IsShootingUp();
         #endregion
     }
 
@@ -95,5 +102,10 @@ public class InputHandler : MonoBehaviour
 		}
 		
     }
+
+
+
+
+
 }
 

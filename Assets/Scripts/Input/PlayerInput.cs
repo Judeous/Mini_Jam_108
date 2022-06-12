@@ -75,61 +75,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Arrow Keys"",
-                    ""id"": ""4e49678b-9870-460d-8774-7b92b88682cb"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""32d52029-746e-4391-98cf-a116df9e6a71"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""f87bf301-96e1-4605-8594-643a5fb0bc9a"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""169d6493-2d1d-4110-a32b-bed391eeb62a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""57175f1c-b5d5-4c6b-94f6-a65a06686092"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""WASD"",
                     ""id"": ""28b392bf-1005-4c34-baea-5ef203849862"",
                     ""path"": ""2DVector"",
@@ -345,6 +290,94 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Shooting"",
+            ""id"": ""ce209ac8-6e0a-45fc-a922-f3b7caf4f403"",
+            ""actions"": [
+                {
+                    ""name"": ""UP"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e063b4b-f1b7-49ba-af29-3c45757acfef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DOWN"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0c066cf-360f-4d83-b1de-6a940bceb5b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LEFT"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea88957d-397c-4d07-b39a-9b8f3c37853e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RIGHT"",
+                    ""type"": ""Button"",
+                    ""id"": ""16a32098-f1af-4a26-a0ab-50e5d039dcfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f9ca200b-0a0c-42ad-bcba-bba0e5d2b3e6"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6aeb663c-e254-4d82-8299-4d1ec1850b19"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DOWN"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5079e454-4bbf-4442-b5d3-af246ab5930a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LEFT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91f11cf3-25cd-47ff-a9e5-25555db69f83"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RIGHT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -359,6 +392,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        // Shooting
+        m_Shooting = asset.FindActionMap("Shooting", throwIfNotFound: true);
+        m_Shooting_UP = m_Shooting.FindAction("UP", throwIfNotFound: true);
+        m_Shooting_DOWN = m_Shooting.FindAction("DOWN", throwIfNotFound: true);
+        m_Shooting_LEFT = m_Shooting.FindAction("LEFT", throwIfNotFound: true);
+        m_Shooting_RIGHT = m_Shooting.FindAction("RIGHT", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -512,6 +551,63 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Shooting
+    private readonly InputActionMap m_Shooting;
+    private IShootingActions m_ShootingActionsCallbackInterface;
+    private readonly InputAction m_Shooting_UP;
+    private readonly InputAction m_Shooting_DOWN;
+    private readonly InputAction m_Shooting_LEFT;
+    private readonly InputAction m_Shooting_RIGHT;
+    public struct ShootingActions
+    {
+        private @PlayerInput m_Wrapper;
+        public ShootingActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @UP => m_Wrapper.m_Shooting_UP;
+        public InputAction @DOWN => m_Wrapper.m_Shooting_DOWN;
+        public InputAction @LEFT => m_Wrapper.m_Shooting_LEFT;
+        public InputAction @RIGHT => m_Wrapper.m_Shooting_RIGHT;
+        public InputActionMap Get() { return m_Wrapper.m_Shooting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShootingActions set) { return set.Get(); }
+        public void SetCallbacks(IShootingActions instance)
+        {
+            if (m_Wrapper.m_ShootingActionsCallbackInterface != null)
+            {
+                @UP.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnUP;
+                @UP.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnUP;
+                @UP.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnUP;
+                @DOWN.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnDOWN;
+                @DOWN.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnDOWN;
+                @DOWN.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnDOWN;
+                @LEFT.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnLEFT;
+                @LEFT.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnLEFT;
+                @LEFT.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnLEFT;
+                @RIGHT.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnRIGHT;
+                @RIGHT.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnRIGHT;
+                @RIGHT.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnRIGHT;
+            }
+            m_Wrapper.m_ShootingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @UP.started += instance.OnUP;
+                @UP.performed += instance.OnUP;
+                @UP.canceled += instance.OnUP;
+                @DOWN.started += instance.OnDOWN;
+                @DOWN.performed += instance.OnDOWN;
+                @DOWN.canceled += instance.OnDOWN;
+                @LEFT.started += instance.OnLEFT;
+                @LEFT.performed += instance.OnLEFT;
+                @LEFT.canceled += instance.OnLEFT;
+                @RIGHT.started += instance.OnRIGHT;
+                @RIGHT.performed += instance.OnRIGHT;
+                @RIGHT.canceled += instance.OnRIGHT;
+            }
+        }
+    }
+    public ShootingActions @Shooting => new ShootingActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -523,5 +619,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IShootingActions
+    {
+        void OnUP(InputAction.CallbackContext context);
+        void OnDOWN(InputAction.CallbackContext context);
+        void OnLEFT(InputAction.CallbackContext context);
+        void OnRIGHT(InputAction.CallbackContext context);
     }
 }

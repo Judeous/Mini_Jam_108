@@ -9,7 +9,7 @@ public class HarpoonClass : MonoBehaviour
     [SerializeField]
     public Rigidbody2D _rigidbody2D;
     [SerializeField]
-    public GameObject Target;
+    public GameObject Launcher;
     private bool _shootingDown = false;
     private bool _shootingLeft = false;
     private bool _shootingUp = false;
@@ -28,45 +28,34 @@ public class HarpoonClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_shootingRight)
+        if ((transform.position - Launcher.transform.position).magnitude > 20)
+            _returning = true;
+
+        if (_returning)
         {
-            _rigidbody2D.AddForce(new Vector2(1, 0));
+            Vector2 toTarget = (Launcher.transform.position - transform.position);
+            _rigidbody2D.AddForce(toTarget.normalized * _speed * 2, ForceMode2D.Force);
         }
-        else if (_returning)
+        else
         {
-            Vector2 toTarget = (Target.transform.position - transform.position);
-            _rigidbody2D.velocity = toTarget.normalized * _speed;
+            if (_shootingRight)
+            {
+                _rigidbody2D.AddForce(new Vector2(1, 0));
+            }
+            if (_shootingLeft)
+            {
+                _rigidbody2D.AddForce(new Vector2(-1, 0));
+            }
+            if (_shootingUp)
+            {
+                _rigidbody2D.AddForce(new Vector2(0, 1));
+            }
+            if (_shootingDown)
+            {
+                _rigidbody2D.AddForce(new Vector2(0, -1));
+            }
         }
 
-        if (_shootingLeft)
-        {
-            _rigidbody2D.AddForce(new Vector2(-1, 0));
-        }
-        else if (_returning)
-        {
-            Vector2 toTarget = (Target.transform.position - transform.position);
-            _rigidbody2D.velocity = toTarget.normalized * _speed;
-        }
-
-        if (_shootingUp)
-        {
-            _rigidbody2D.AddForce(new Vector2(0, 1));
-        }
-        else if (_returning)
-        {
-            Vector2 toTarget = (Target.transform.position - transform.position);
-            _rigidbody2D.velocity = toTarget.normalized * _speed;
-        }
-
-        if (_shootingDown)
-        {
-            _rigidbody2D.AddForce(new Vector2(0, -1));
-        }
-        else if (_returning)
-        {
-            Vector2 toTarget = (Target.transform.position - transform.position);
-            _rigidbody2D.velocity = toTarget.normalized * _speed;
-        }
     }
 
     public void StopHarpoon()

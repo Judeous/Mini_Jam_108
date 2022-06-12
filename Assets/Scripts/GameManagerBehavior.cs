@@ -7,6 +7,10 @@ public class GameManagerBehavior : MonoBehaviour
     private InputHandlerBehavior _pauseInput;
     [SerializeField] private AudioSource _gameplayAudioSource;
     [SerializeField] private AudioSource _pausedAudioSource;
+    [SerializeField] private AudioSource _MainMenuAudioSource;
+
+    [SerializeField] private bool _isMainMenu = false;
+    private bool _canPause = true;
     private bool _paused = false;
     
     public bool Paused
@@ -17,14 +21,23 @@ public class GameManagerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _pauseInput = GetComponent<InputHandlerBehavior>();
+        if (!_isMainMenu)
+        {
+            _pauseInput = GetComponent<InputHandlerBehavior>();
+            _canPause = _pauseInput ? true : false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Update Paused
-        _paused = _pauseInput.Paused;
+        //If this is the main menu, don't do the rest of the Update
+        if (_isMainMenu)
+            return;
+
+        //Update Paused if this can pause
+        if (_canPause)
+            _paused = _pauseInput.Paused;
 
         //If the game is paused
         if (_paused)
@@ -33,8 +46,10 @@ public class GameManagerBehavior : MonoBehaviour
             //_gameplayAudioSource.Pause();
             //_pausedAudioSource.UnPause();
 
-            _gameplayAudioSource.mute = true;
-            _pausedAudioSource.mute = false;
+            if (_gameplayAudioSource)
+                _gameplayAudioSource.mute = true;
+            if (_pausedAudioSource)
+                _pausedAudioSource.mute = false;
         }
         else
         {
@@ -42,8 +57,21 @@ public class GameManagerBehavior : MonoBehaviour
             //_gameplayAudioSource.UnPause();
             //_pausedAudioSource.Pause();
 
-            _gameplayAudioSource.mute = false;
-            _pausedAudioSource.mute = true;
+            if (_gameplayAudioSource)
+                _gameplayAudioSource.mute = false;
+            if (_pausedAudioSource)
+                _pausedAudioSource.mute = true;
         }
+    }
+
+    public void ChangeVolume(float value)
+    {
+        if (_MainMenuAudioSource != null)
+            _MainMenuAudioSource.volume = value;
+        
+        if (_gameplayAudioSource != null)
+            _gameplayAudioSource.volume = value;
+        if (_pausedAudioSource != null)
+            _pausedAudioSource.volume = value;
     }
 }

@@ -10,6 +10,9 @@ public class InputHandler : MonoBehaviour
 
 	private PlayerInput controls;
 
+	//Grabs the empty game object for the pause menu screen
+	public GameObject PauseMenu;
+
 	[Header("Input Values")]
 	public Action<InputArgs> OnJumpPressed;
 	public Action<InputArgs> OnJumpReleased;
@@ -19,8 +22,11 @@ public class InputHandler : MonoBehaviour
 	public Vector2 MoveInput { get; private set; }
 	public float ClimbInput { get; private set; }
 
+	public bool isPaused = false;
+
 	private void Awake()
 	{
+
 		#region Singleton
 		if (instance == null)
 		{
@@ -70,10 +76,25 @@ public class InputHandler : MonoBehaviour
 	}
 	#endregion
 
-
+	//Toggles the pause menu scren 
 	public void OnPause()
     {
-		Debug.Log("Paused");
+
+		if(isPaused == false)
+        {
+			PauseMenu.SetActive(false);
+			isPaused = true;
+		
+			Time.timeScale = 1f;
+		}
+		else if(isPaused == true)
+        {
+			PauseMenu.SetActive(true);
+			isPaused = false;
+			Time.timeScale = 0.0000001f;
+			Debug.Log("Paused");
+		}
+		
     }
 }
 

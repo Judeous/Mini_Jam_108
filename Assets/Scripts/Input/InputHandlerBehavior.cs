@@ -40,7 +40,7 @@ public class InputHandlerBehavior : MonoBehaviour
             _timeShootHeld += Time.deltaTime;
             if (!_shootheld && _timeShootHeld < _timeBeforeShootMoves)
             {
-                _harpoon.ShootForward();
+                _harpoon.IsShooting();
             }
             _shootheld = true;
             

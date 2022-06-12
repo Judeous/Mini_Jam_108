@@ -7,16 +7,16 @@ public class HarpoonClass : MonoBehaviour
     [SerializeField]
     public float _speed = 5;
     [SerializeField]
-    public GameObject _Harpoon;
-    [SerializeField]
-    public GameObject _Gun;
+    public Rigidbody2D _rigidbody2D;
     private bool _shooting = false;
     private bool _returning = false;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,7 +24,8 @@ public class HarpoonClass : MonoBehaviour
     {
         if(_shooting)
         {
-            _Harpoon.transform.Translate(0, 0, Time.deltaTime * _speed);
+            //_Harpoon.transform.Translate(0, 0, Time.deltaTime * _speed);
+            Shoot();
         }
         else if(_returning)
         {
@@ -34,23 +35,30 @@ public class HarpoonClass : MonoBehaviour
 
     public void StopHarpoon()
     {
-        _Harpoon.transform.Translate(0, 0, 0);
+        _rigidbody2D.Sleep();
         _shooting = false;
     }
 
     public void ReturnHarpoon()
     {
-        _Harpoon.transform.Translate(0, 0, Time.deltaTime * -_speed);
+        _rigidbody2D.AddForce(new Vector2(-_speed, 0));
     }
 
-    public void ShootForward()
+    public void Shoot()
     {
 
+
+        _rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+
+
+    }
+
+    public void IsShooting()
+    {
         _shooting = true;
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
 
         _shooting = false;
@@ -61,6 +69,12 @@ public class HarpoonClass : MonoBehaviour
             return;
         }
         _returning = true;
+
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 

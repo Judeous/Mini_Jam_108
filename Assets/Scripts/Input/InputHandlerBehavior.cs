@@ -33,23 +33,7 @@ public class InputHandlerBehavior : MonoBehaviour
 
         //Get pause input
         float pauseInput = Input.GetAxis("Cancel");
-        float shootInput = Input.GetAxis("Fire1");
 
-        if (shootInput != 0)
-        {
-            _timeShootHeld += Time.deltaTime;
-            if (!_shootheld && _timeShootHeld < _timeBeforeShootMoves)
-            {
-                _harpoon.IsShooting();
-            }
-            _shootheld = true;
-            
-        }
-        else
-        {
-            _shootheld = false;
-            _timeShootHeld = 0;
-        }
 
         //If pausing and not holding pause
         if (pauseInput == 1)

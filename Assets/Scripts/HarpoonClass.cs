@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class HarpoonClass : MonoBehaviour
 {
+    private InputHandler _input;
     [SerializeField]
     public float _speed = 5;
     [SerializeField]
     public Rigidbody2D _rigidbody2D;
-    private bool _shooting = false;
+    private bool _shootingDown = false;
+    private bool _shootingLeft = false;
+    private bool _shootingUp = false;
+    private bool _shootingRight = false;
     private bool _returning = false;
 
 
@@ -22,46 +26,76 @@ public class HarpoonClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_shooting)
+        if (_shootingRight)
         {
-            //_Harpoon.transform.Translate(0, 0, Time.deltaTime * _speed);
-            Shoot();
+            _rigidbody2D.AddForce(new Vector2(_speed, 0));
         }
-        else if(_returning)
+        else if (_returning)
         {
-            ReturnHarpoon();
+            _rigidbody2D.AddForce(new Vector2(-_speed, 0));
+        }
+
+        if (_shootingLeft)
+        {
+            _rigidbody2D.AddForce(new Vector2(-_speed, 0));
+        }
+        else if (_returning)
+        {
+            _rigidbody2D.AddForce(new Vector2(_speed, 0));
+        }
+
+        if (_shootingUp)
+        {
+            _rigidbody2D.AddForce(new Vector2(0, _speed));
+        }
+        else if (_returning)
+        {
+            _rigidbody2D.AddForce(new Vector2(0, -_speed));
+        }
+
+        if (_shootingDown)
+        {
+            _rigidbody2D.AddForce(new Vector2(0, -_speed));
+        }
+        else if (_returning)
+        {
+            _rigidbody2D.AddForce(new Vector2(0, _speed));
         }
     }
 
     public void StopHarpoon()
     {
         _rigidbody2D.Sleep();
-        _shooting = false;
+        _shootingRight = false;
+        _shootingUp = false;
+        _shootingLeft = false;
+        _shootingDown = false;
     }
 
-    public void ReturnHarpoon()
+    public void IsShootingRight()
     {
-        _rigidbody2D.AddForce(new Vector2(-_speed, 0));
+        _shootingRight = true;
     }
 
-    public void Shoot()
+    public void IsShootingLeft()
     {
-
-
-        _rigidbody2D.AddForce(force, ForceMode2D.Impulse);
-
-
+        _shootingLeft = true;
     }
 
-    public void IsShooting()
+    public void IsShootingDown()
     {
-        _shooting = true;
+        _shootingDown = true;
+    }
+
+    public void IsShootingUp()
+    {
+        _shootingUp = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        _shooting = false;
+        _shootingRight = false;
         if (other.gameObject.CompareTag("HarpoonGun"))
         {
             _returning = false;

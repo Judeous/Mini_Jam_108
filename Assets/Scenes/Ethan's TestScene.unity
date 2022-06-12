@@ -946,6 +946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _rigidbody2D: {fileID: 1283692814}
+  _harpoonGun: {fileID: 161124130}
   Target: {fileID: 161124130}
   _shootingRight: 0
 --- !u!50 &1283692814

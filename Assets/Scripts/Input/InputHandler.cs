@@ -14,7 +14,7 @@ public class InputHandler : MonoBehaviour
 	public Action<InputArgs> OnJumpPressed;
 	public Action<InputArgs> OnJumpReleased;
 	public Action<InputArgs> OnDash;
-	public Action<InputArgs> OnPause;
+
 
 	public Vector2 MoveInput { get; private set; }
 	public float ClimbInput { get; private set; }
@@ -45,13 +45,14 @@ public class InputHandler : MonoBehaviour
 		controls.Player.Dash.performed += ctx => OnDash(new InputArgs { context = ctx });
 
 		controls.Player.Climb.performed += ctx => ClimbInput = ctx.ReadValue<float>();
-		controls.Player.Climb.canceled += ctx => ClimbInput = 0;
-		
-		#endregion
-	}
+        controls.Player.Climb.canceled += ctx => ClimbInput = 0;
+		controls.UI.Pause.performed += ctx => OnPause();
 
-	#region Events
-	public class InputArgs
+        #endregion
+    }
+
+    #region Events
+    public class InputArgs
 	{
 		public InputAction.CallbackContext context;
 	}
@@ -68,5 +69,11 @@ public class InputHandler : MonoBehaviour
 		controls.Disable();
 	}
 	#endregion
+
+
+	public void OnPause()
+    {
+		Debug.Log("Paused");
+    }
 }
 

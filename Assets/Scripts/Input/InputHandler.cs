@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour
 	public Action<InputArgs> OnJumpPressed;
 	public Action<InputArgs> OnJumpReleased;
 	public Action<InputArgs> OnDash;
+	public Action<InputArgs> OnPause;
 
 	public Vector2 MoveInput { get; private set; }
 	public float ClimbInput { get; private set; }
@@ -45,6 +46,7 @@ public class InputHandler : MonoBehaviour
 
 		controls.Player.Climb.performed += ctx => ClimbInput = ctx.ReadValue<float>();
 		controls.Player.Climb.canceled += ctx => ClimbInput = 0;
+		
 		#endregion
 	}
 

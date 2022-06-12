@@ -57,12 +57,12 @@ public class InputHandler : MonoBehaviour
 		controls.UI.Pause.performed += ctx => OnPause();
 
 
-		controls.Shooting.RIGHT.performed += ctx => _harpoon.IsShootingRight();
-		controls.Shooting.LEFT.performed += ctx => _harpoon.IsShootingLeft();
-		controls.Shooting.DOWN.performed += ctx => _harpoon.IsShootingDown();
-		controls.Shooting.UP.performed += ctx => _harpoon.IsShootingUp();
-		#endregion
-	}
+        controls.Shooting.RIGHT.performed += ctx => _harpoon.IsShootingRight();
+        controls.Shooting.LEFT.performed += ctx => _harpoon.IsShootingLeft();
+        controls.Shooting.DOWN.performed += ctx => _harpoon.IsShootingDown();
+        controls.Shooting.UP.performed += ctx => _harpoon.IsShootingUp();
+        #endregion
+    }
 
     #region Events
     public class InputArgs

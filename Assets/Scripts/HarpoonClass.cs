@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class HarpoonClass : MonoBehaviour
 {
-    private InputHandler _input;
     [SerializeField]
-    public float _speed = 5;
+    public float _speed = 10;
     [SerializeField]
     public Rigidbody2D _rigidbody2D;
+    [SerializeField]
+    public GameObject Target;
     private bool _shootingDown = false;
     private bool _shootingLeft = false;
     private bool _shootingUp = false;
+    [SerializeField]
     private bool _shootingRight = false;
     private bool _returning = false;
 
@@ -28,38 +30,42 @@ public class HarpoonClass : MonoBehaviour
     {
         if (_shootingRight)
         {
-            _rigidbody2D.AddForce(new Vector2(_speed, 0));
+            _rigidbody2D.AddForce(new Vector2(1, 0));
         }
         else if (_returning)
         {
-            _rigidbody2D.AddForce(new Vector2(-_speed, 0));
+            Vector2 toTarget = (Target.transform.position - transform.position);
+            _rigidbody2D.velocity = toTarget.normalized * _speed;
         }
 
         if (_shootingLeft)
         {
-            _rigidbody2D.AddForce(new Vector2(-_speed, 0));
+            _rigidbody2D.AddForce(new Vector2(-1, 0));
         }
         else if (_returning)
         {
-            _rigidbody2D.AddForce(new Vector2(_speed, 0));
+            Vector2 toTarget = (Target.transform.position - transform.position);
+            _rigidbody2D.velocity = toTarget.normalized * _speed;
         }
 
         if (_shootingUp)
         {
-            _rigidbody2D.AddForce(new Vector2(0, _speed));
+            _rigidbody2D.AddForce(new Vector2(0, 1));
         }
         else if (_returning)
         {
-            _rigidbody2D.AddForce(new Vector2(0, -_speed));
+            Vector2 toTarget = (Target.transform.position - transform.position);
+            _rigidbody2D.velocity = toTarget.normalized * _speed;
         }
 
         if (_shootingDown)
         {
-            _rigidbody2D.AddForce(new Vector2(0, -_speed));
+            _rigidbody2D.AddForce(new Vector2(0, -1));
         }
         else if (_returning)
         {
-            _rigidbody2D.AddForce(new Vector2(0, _speed));
+            Vector2 toTarget = (Target.transform.position - transform.position);
+            _rigidbody2D.velocity = toTarget.normalized * _speed;
         }
     }
 
@@ -96,6 +102,9 @@ public class HarpoonClass : MonoBehaviour
     {
 
         _shootingRight = false;
+        _shootingLeft = false;
+        _shootingDown = false;
+        _shootingUp = false;
         if (other.gameObject.CompareTag("HarpoonGun"))
         {
             _returning = false;

@@ -235,7 +235,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""id"": ""2e063b4b-f1b7-49ba-af29-3c45757acfef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -244,8 +244,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""id"": ""e0c066cf-360f-4d83-b1de-6a940bceb5b4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""LEFT"",
@@ -253,8 +253,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""id"": ""ea88957d-397c-4d07-b39a-9b8f3c37853e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""RIGHT"",
@@ -262,7 +262,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""id"": ""16a32098-f1af-4a26-a0ab-50e5d039dcfe"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 }
             ],

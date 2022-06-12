@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HarpoonGunClass : MonoBehaviour
 {
-
+    public GameObject _HarpoonGun;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,10 @@ public class HarpoonGunClass : MonoBehaviour
 
     }
 
+    public void RotateUp()
+    {
+        
+    }
 
 
 

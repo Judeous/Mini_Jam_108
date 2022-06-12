@@ -10,17 +10,23 @@ public class InputHandler : MonoBehaviour
 
 	private PlayerInput controls;
 
+	//Grabs the empty game object for the pause menu screen
+	public GameObject PauseMenu;
+
 	[Header("Input Values")]
 	public Action<InputArgs> OnJumpPressed;
 	public Action<InputArgs> OnJumpReleased;
 	public Action<InputArgs> OnDash;
-	public Action<InputArgs> OnPause;
+
 
 	public Vector2 MoveInput { get; private set; }
 	public float ClimbInput { get; private set; }
 
+	public bool isPaused = false;
+
 	private void Awake()
 	{
+
 		#region Singleton
 		if (instance == null)
 		{
@@ -45,13 +51,14 @@ public class InputHandler : MonoBehaviour
 		controls.Player.Dash.performed += ctx => OnDash(new InputArgs { context = ctx });
 
 		controls.Player.Climb.performed += ctx => ClimbInput = ctx.ReadValue<float>();
-		controls.Player.Climb.canceled += ctx => ClimbInput = 0;
-		
-		#endregion
-	}
+        controls.Player.Climb.canceled += ctx => ClimbInput = 0;
+		controls.UI.Pause.performed += ctx => OnPause();
 
-	#region Events
-	public class InputArgs
+        #endregion
+    }
+
+    #region Events
+    public class InputArgs
 	{
 		public InputAction.CallbackContext context;
 	}
@@ -68,5 +75,26 @@ public class InputHandler : MonoBehaviour
 		controls.Disable();
 	}
 	#endregion
+
+	//Toggles the pause menu scren 
+	public void OnPause()
+    {
+
+		if(isPaused == false)
+        {
+			PauseMenu.SetActive(false);
+			isPaused = true;
+		
+			Time.timeScale = 1f;
+		}
+		else if(isPaused == true)
+        {
+			PauseMenu.SetActive(true);
+			isPaused = false;
+			Time.timeScale = 0.0000001f;
+			Debug.Log("Paused");
+		}
+		
+    }
 }
 

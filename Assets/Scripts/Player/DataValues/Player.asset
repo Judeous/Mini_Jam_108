@@ -35,7 +35,7 @@ MonoBehaviour:
   slideAccel: 8.4
   slidePower: 1.6
   dashAmount: 1824
-  dashSpeed: 35
+  dashSpeed: 25
   dashAttackTime: 0.1
   dashAttackDragAmount: 0.2
   dashEndTime: 0.2

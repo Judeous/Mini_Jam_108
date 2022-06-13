@@ -12,35 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9c7aa7d64244344952912937c2e34a, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  gravityScale: 4.3
-  fallGravityMult: 2
-  quickFallGravityMult: 2
+  gravityScale: 2.36
+  fallGravityMult: 5.4
+  quickFallGravityMult: 12
   dragAmount: 0.52
   frictionAmount: 5.16
   coyoteTime: 0.145
   runMaxSpeed: 14
   runAccel: 9.41
   runDeccel: 15.46
-  accelInAir: 0.9
-  deccelInAir: 0.17
+  accelInAir: 0.237
+  deccelInAir: 0.477
   accelPower: 1.35
   stopPower: 1.23
   turnPower: 1.42
-  jumpForce: 20
-  jumpCutMultiplier: 0.65
-  jumpBufferTime: 0.086
+  jumpForce: 14
+  jumpCutMultiplier: 1
+  jumpBufferTime: 0.5
   wallJumpForce: {x: 8, y: 13}
   wallJumpRunLerp: 0.591
   wallJumpTime: 0.111
   slideAccel: 8.4
   slidePower: 1.6
-  dashAmount: 1
-  dashSpeed: 43
+  dashAmount: 1824
+  dashSpeed: 35
   dashAttackTime: 0.1
   dashAttackDragAmount: 0.2
-  dashEndTime: 0.1
-  dashUpEndMult: 0.05
+  dashEndTime: 0.2
+  dashUpEndMult: 0.5
   dashEndRunLerp: 0.05
-  dashBufferTime: 0.435
+  dashBufferTime: 0.5
   doKeepRunMomentum: 0
-  doTurnOnWallJump: 0
+  doTurnOnWallJump: 1

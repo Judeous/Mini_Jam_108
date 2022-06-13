@@ -27,6 +27,7 @@ public class InputHandler : MonoBehaviour
 	private void Awake()
 	{
 
+
 		#region Singleton
 		if (instance == null)
 		{

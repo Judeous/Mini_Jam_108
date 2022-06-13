@@ -329,6 +329,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9d937412-2303-4a82-a6e0-00f7e619d354"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d4b00d4c-e40d-4da9-a82e-739d8a99f3d3"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",

@@ -12,14 +12,12 @@ public class HarpoonClass : MonoBehaviour
     [SerializeField]
     public GameObject _harpoonGun;
     public GameObject Launcher;
+    private bool _shooting = false;
     private bool _shootingDown = false;
     private bool _shootingLeft = false;
     private bool _shootingUp = false;
-    [SerializeField]
     private bool _shootingRight = false;
     private bool _returning = false;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -42,27 +40,27 @@ public class HarpoonClass : MonoBehaviour
         {
             if (_shootingRight)
             {
-                _rigidbody2D.AddForce(new Vector2(1, 0));
+                _rigidbody2D.AddForce(new Vector2(_speed, 0));
             }
             if (_shootingLeft)
             {
-                _rigidbody2D.AddForce(new Vector2(-1, 0));
+                _rigidbody2D.AddForce(new Vector2(-_speed, 0));
             }
             if (_shootingUp)
             {
-                _rigidbody2D.AddForce(new Vector2(0, 1));
+                _rigidbody2D.AddForce(new Vector2(0, _speed));
             }
             if (_shootingDown)
             {
-                _rigidbody2D.AddForce(new Vector2(0, -1));
+                _rigidbody2D.AddForce(new Vector2(0, -_speed));
             }
         }
-
     }
 
     public void StopHarpoon()
     {
         _rigidbody2D.Sleep();
+        _shooting = false;
         _shootingRight = false;
         _shootingUp = false;
         _shootingLeft = false;
@@ -71,26 +69,46 @@ public class HarpoonClass : MonoBehaviour
 
     public void IsShootingRight()
     {
-        _shootingRight = true;
-        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        if (!_shooting)
+        {
+            _shootingRight = true;
+            _rigidbody2D.AddForce(new Vector2(_speed, 0), ForceMode2D.Impulse);
+            _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            _shooting = true;
+        }
     }
 
     public void IsShootingLeft()
     {
-        _shootingLeft = true;
-        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 180);
+        if (!_shooting)
+        {
+            _shootingLeft = true;
+            _rigidbody2D.AddForce(new Vector2(-_speed, 0), ForceMode2D.Impulse);
+            _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 180);
+            _shooting = true;
+        }
     }
 
     public void IsShootingDown()
     {
-        _shootingDown = true;
-        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, -90);
+        if (!_shooting)
+        {
+            _shootingDown = true;
+            _rigidbody2D.AddForce(new Vector2(0, -_speed), ForceMode2D.Impulse);
+            _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, -90);
+            _shooting = true;
+        }
     }
 
     public void IsShootingUp()
     {
-        _shootingUp = true;
-        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 90);
+        if (!_shooting)
+        {
+            _shootingUp = true;
+            _rigidbody2D.AddForce(new Vector2(0, _speed), ForceMode2D.Impulse);
+            _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 90);
+            _shooting = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

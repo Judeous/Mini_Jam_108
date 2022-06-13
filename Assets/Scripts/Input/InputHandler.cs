@@ -61,6 +61,7 @@ public class InputHandler : MonoBehaviour
         controls.Shooting.LEFT.performed += ctx => _harpoon.IsShootingLeft();
         controls.Shooting.DOWN.performed += ctx => _harpoon.IsShootingDown();
         controls.Shooting.UP.performed += ctx => _harpoon.IsShootingUp();
+
         #endregion
     }
 

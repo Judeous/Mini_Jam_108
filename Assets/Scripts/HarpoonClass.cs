@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class HarpoonClass : MonoBehaviour
 {
+    //[SerializeField] private HarpoonGunClass _harpoonGun;
     [SerializeField]
     public float _speed = 10;
     [SerializeField]
     public Rigidbody2D _rigidbody2D;
     [SerializeField]
+    public GameObject _harpoonGun;
     public GameObject Launcher;
     private bool _shootingDown = false;
     private bool _shootingLeft = false;
@@ -70,21 +72,25 @@ public class HarpoonClass : MonoBehaviour
     public void IsShootingRight()
     {
         _shootingRight = true;
+        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void IsShootingLeft()
     {
         _shootingLeft = true;
+        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 180);
     }
 
     public void IsShootingDown()
     {
         _shootingDown = true;
+        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, -90);
     }
 
     public void IsShootingUp()
     {
         _shootingUp = true;
+        _harpoonGun.transform.localRotation = Quaternion.Euler(0, 0, 90);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
